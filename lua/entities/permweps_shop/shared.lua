@@ -1,9 +1,9 @@
 ENT.Base = "base_ai" 
 ENT.Type = "ai" 
 ENT.AutomaticFrameAdvance = true
-ENT.PrintName = "PermWeps NPC"
+ENT.PrintName = "PermWeps Shop NPC"
 ENT.Author = "ThatOneBrah"
 ENT.Category = "Scriptfodder"
-ENT.Intructions = "Spawn this bitch..."
+ENT.Intructions = "Press E to buy weapons!"
 ENT.Spawnable = true
 ENT.AdminSpawnable = true

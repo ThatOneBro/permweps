@@ -39,5 +39,3 @@ function ENT:AcceptInput( Name, Activator, Caller )
 		umsg.End()
 	end
 end
-
-
