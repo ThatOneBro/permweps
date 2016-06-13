@@ -28,8 +28,9 @@ NPC1.NPCPhrase = "You gonna just stand there, or are you here to buy a gun?" -- 
 ------------------------------
 ---    Config ends here    ---
 ------------------------------ 
+local vendors = 1
 
-for local i = 1, i >= NumOfVendors do
+for vendors, NumOfVendors do
 	config.["NPC"+i] = NPC + i;
 end
 
