@@ -1,0 +1,9 @@
+ENT.Base = "base_ai" 
+ENT.Type = "ai" 
+ENT.AutomaticFrameAdvance = true
+ENT.PrintName = "PermWeps VIP Shop NPC"
+ENT.Author = "ThatOneBrah"
+ENT.Category = "Scriptfodder"
+ENT.Intructions = "Press E to buy weapons!"
+ENT.Spawnable = true
+ENT.AdminSpawnable = true

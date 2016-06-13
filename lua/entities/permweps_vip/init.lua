@@ -5,7 +5,7 @@ include( 'shared.lua' )
 
 
 function ENT:Initialize( )
-	self:SetModel( PermWeps.NPC1.NPCModel )
+	self:SetModel( PermWeps.NPC2.NPCModel )
 	self:SetHullType( HULL_HUMAN )
 	self:SetHullSizeNormal( )
 	self:SetNPCState( NPC_STATE_SCRIPT )
@@ -21,7 +21,7 @@ end
 
 function ENT:SpawnFunction( ply, tr )
     if ( !tr.Hit ) then return end
-    local ent = ents.Create( 'permweps_shop' )
+    local ent = ents.Create( 'permweps_vip' )
     ent:SetPos( tr.HitPos + tr.HitNormal * 16 ) 
     ent:Spawn()
     ent:Activate()
@@ -35,7 +35,7 @@ end
 
 function ENT:AcceptInput( Name, Activator, Caller )
 	if Name == "Use" and Caller:IsPlayer() then
-		umsg.Start("PermWepsShopUsed", Caller)
+		umsg.Start("PermWepsVIPShopUsed", Caller)
 		umsg.End()
 	end
 end

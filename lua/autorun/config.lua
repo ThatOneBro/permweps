@@ -8,30 +8,34 @@ local config = {} -- Ignore this line
 ------------------
 -- NPC Settings --
 ------------------
-local NumOfVendors = 1
 
--- NPC 1 --
-local NPC1 = {} -- Change the number to the index of the number (ex. NPC2)
+-- Normal Shop NPC --
+config.NPC1.NPCName = "PermWeps Vendor" -- The name of the vendor
+config.NPC1.NPCModel = "models/Player/Odessa.mdl" -- The path to the NPC's model from "garrysmod" root folder (ex. "PATH/TO/FILE.mdl")
+config.NPC1.NPCPosition = Vector(235,5322,132) -- The location of the NPC on the map (type "getpos" in console for your current coordinates)
+config.NPC1.NPCFacing = 0 -- The direction the NPC faces (an angular value 0-360)
+config.NPC1.NPCPhrase = "You gonna just stand there, or are you here to buy a gun?" -- The phrase the NPC says to client on open
+-- End Normal Shop NPC --
 
-NPC1.NPCName = "PermWeps Vendor" -- The name of the vendor
-NPC1.NPCModel = "models/Humans/Group01/Female_02.mdl" -- The path to the NPC's model from "garrysmod" root folder (ex. "PATH/TO/FILE.mdl")
-NPC1.NPCPosition = Vector(235,5322,132) -- The location of the NPC on the map (type "getpos" in console for your current coordinates)
-NPC1.NPCFacing = 0 -- The direction the NPC faces (an angular value 0-360)
-NPC1.NPCPhrase = "You gonna just stand there, or are you here to buy a gun?" -- The phrase the NPC says to client on open
--- End NPC 1 --
+-- VIP Shop NPC --
+config.NPC2.NPCName = "PermWeps VIP Vendor" -- The name of the vendor
+config.NPC2.NPCModel = "models/Humans/Group01/Female_04.mdl" -- The path to the NPC's model from "garrysmod" root folder (ex. "PATH/TO/FILE.mdl")
+config.NPC2.NPCPosition = Vector(235,5300,132) -- The location of the NPC on the map (type "getpos" in console for your current coordinates)
+config.NPC2.NPCFacing = 0 -- The direction the NPC faces (an angular value 0-360)
+config.NPC2.NPCPhrase = "Welcome VIP member! Check out my selection..." -- The phrase the NPC says to client on open
+-- End VIP Shop NPC --
+
+------------------
+--   End NPC    --
+------------------
 
 
-
+-------------------
 -- Shop Settings --
-
+-------------------
 
 ------------------------------
 ---    Config ends here    ---
------------------------------- 
-local vendors = 1
-
-for vendors, NumOfVendors do
-	config.["NPC"+i] = NPC + i;
-end
+------------------------------
 
 PermWeps = config
