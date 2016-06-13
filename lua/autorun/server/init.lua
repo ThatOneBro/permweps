@@ -23,5 +23,5 @@ hook.Add( "InitPostEntity", "SpawnVIPGunShop", SpawnVIPGunShop )
 /*local function OnSpawnCheck( ply )
 	local lply = ply
 	
-	lply
+	lply:SteamID()
 end*/
