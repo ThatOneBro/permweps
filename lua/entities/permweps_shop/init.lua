@@ -5,7 +5,7 @@ include( 'shared.lua' )
 
 
 function ENT:Initialize( )
-	self:SetModel( "models/Humans/Group01/Female_02.mdl" )
+	self:SetModel( PermWeps.NPCModel )
 	self:SetHullType( HULL_HUMAN )
 	self:SetHullSizeNormal( )
 	self:SetNPCState( NPC_STATE_SCRIPT )
