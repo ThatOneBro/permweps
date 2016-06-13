@@ -1,3 +1,7 @@
+local function AddonLoader()
+	-- this should test connection to MYSQL database
+
+
 local function SpawnGunShop()
 	local npc = ents.Create("permweps_shop")
 	npc:SetPos(PermWeps.NPCPosition)
@@ -6,3 +10,8 @@ local function SpawnGunShop()
 	npc:Activate()
 end
 hook.Add( "InitPostEntity", "SpawnGunShop", SpawnGunShop )
+
+local function OnSpawnCheck( ply )
+	local lply = ply
+	
+	lply
