@@ -10,7 +10,7 @@ local function PermWepsVIPShop()
 	pShop:Center()
 	pShop:MakePopup()
 
-	chat.AddText(Color(255,255,128), PermWeps.NPC2.NPCName + ": ", Color(255,255,255), PermWeps.NPC2.NPCPhrase )
+	chat.AddText(Color(255,255,128), PermWeps.NPC2.NPCName .. ": ", Color(255,255,255), PermWeps.NPC2.NPCPhrase )
 end
 
 usermessage.Hook("PermWepsVIPShopUsed", PermWepsVIPShop)
