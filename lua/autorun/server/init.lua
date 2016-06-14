@@ -13,13 +13,13 @@ net.Receive( "BuyPermWep", function()
 	
 	lply:Give( "weapon_ak47custom" )
 	
-	umsg.Start( "BoughtPermWep", lply)
+	umsg.Start( "BoughtPermWep", lply )
 	umsg.End()
 
 end )
 
 local function SpawnNormalGunShop()
-	local npc = ents.Create("permweps_shop")
+	local npc = ents.Create( "permweps_shop" )
 	npc:SetPos(PermWeps.NPC1.NPCPosition)
 	npc:SetAngles(Angle(0, PermWeps.NPC1.NPCFacing, 0))
 	npc:Spawn()

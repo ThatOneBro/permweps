@@ -20,7 +20,7 @@ local function PermWepsShop()
 	end
 	Button.DoClick = function()
 		net.Start( "BuyPermWep" )
-			net.WriteEntity(LocalPlayer())
+			net.WriteEntity(LocalPlayer()) --Should write string and pass local player
 		net.SendToServer()
 	end
 
