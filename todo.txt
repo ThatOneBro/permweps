@@ -1,7 +1,7 @@
 PermWeps
 ==========
 Create connection tester for mysql
-Study GUI for DarkRP menus
+//Study GUI for DarkRP menus
 Create shop for single weapon
 Create purchase validator
 Create table for stored weapons
