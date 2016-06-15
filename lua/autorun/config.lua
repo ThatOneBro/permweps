@@ -3,7 +3,7 @@ config.NPC1 = {} -- And this
 config.NPC2 = {} -- And this
 
 ------------------------------
----        Config:         ---
+----       Config:        ----
 ------------------------------ 
 
 
@@ -31,13 +31,28 @@ config.NPC2.NPCPhrase = "Welcome VIP member! Check out my selection..." -- The p
 --   End NPC    --
 ------------------
 
+
+-------------------
+-- Shop Settings --
+-------------------
+
+-- Normal Shop Stock --
+config.Shop1 = {
+"weapon_ak47custom" : 100
+}
+-- End Normal Shop Stock -- 
+
+-- VIP Shop Stock --
+
+-- End VIP Shop Stock --
+
 -------------------
 -- Shop Settings --
 -------------------
 
 
 ------------------------------
----    Config ends here    ---
+----   Config ends here   ----
 ------------------------------
 
 PermWeps = config

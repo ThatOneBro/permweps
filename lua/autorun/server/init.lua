@@ -2,12 +2,15 @@
 function Entity:IsPermWep( )
 	if table.HasValue( self )
 end
-]]
+
+function Player:IsVIP( )
+end
 
 local function DBLoader( )
---registerDarkRPVar
+	registerDarkRPVar
 end
 hook.Add( "DarkRPDBInitialized", "PermWepsDBLoader", DBLoader )
+]]
 
 local function PermWepsNetCache( )
 	util.AddNetworkString( "BuyPermWep" )
@@ -19,11 +22,12 @@ net.Receive( "BuyPermWep", function( )
 	local purchased_weapon = net.ReadString( )
 	
 	--if not purchased_weapon:IsPermWep() then return end
-	lply:Give( purchased_weapon )
 	
-	umsg.Start( "BoughtPermWep", lply )
-	umsg.End( )
-
+		lply:Give( purchased_weapon )
+		lply:ChatPrint( "You bought a gun!" )
+	else
+		lply:ChatPrint( "You cannot afford that!" )
+	end
 end )
 
 local function SpawnNormalGunShop( )

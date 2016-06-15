@@ -13,7 +13,7 @@ local function PermWepsShop( )
 	local Button = vgui.Create( "DButton", pShop )
 	Button:SetText( "Buy permanent weapon!" )
 	Button:SetTextColor( Color( 255, 255, 255 ) )
-	Button:SetPos( 100, 100 )
+	Button:SetPos( 50, 100 )
 	Button:SetSize( 300, 30 )
 	Button.Paint = function( self, w, h )
 		draw.RoundedBox( 0, 0, 0, w, h, Color( 41, 128, 185, 250 ) ) -- Draw a blue button
@@ -28,7 +28,7 @@ local function PermWepsShop( )
 	local Button = vgui.Create( "DButton", pShop )
 	Button:SetText( "Buy permanent weapon!" )
 	Button:SetTextColor( Color( 255, 255, 255 ) )
-	Button:SetPos( 100, 200 )
+	Button:SetPos( 50, 200 )
 	Button:SetSize( 300, 30 )
 	Button.Paint = function( self, w, h )
 		draw.RoundedBox( 0, 0, 0, w, h, Color( 41, 128, 185, 250 ) ) -- Draw a blue button
@@ -42,11 +42,4 @@ local function PermWepsShop( )
 
 	chat.AddText( Color(255,255,128), PermWeps.NPC1.NPCName .. ": ", Color(255,255,255), PermWeps.NPC1.NPCPhrase )
 end
-
 usermessage.Hook( "PermWepsShopUsed", PermWepsShop )
-
-local function BoughtPermWep( )
-	chat.AddText( Color(255, 255, 255), "You bought a gun!" )
-end
-
-usermessage.Hook( "BoughtPermWep", BoughtPermWep )
