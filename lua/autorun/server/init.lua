@@ -22,7 +22,10 @@ net.Receive( "BuyPermWep", function( )
 	local purchased_weapon = net.ReadString( )
 	
 	--if not purchased_weapon:IsPermWep() then return end
+	local wep_price = PermWeps.Shop1[purchased_weapon]
 	
+	if lply:CanAfford( wep_price ) then
+		lply:AddMoney( -wep_price )
 		lply:Give( purchased_weapon )
 		lply:ChatPrint( "You bought a gun!" )
 	else
