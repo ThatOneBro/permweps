@@ -68,7 +68,6 @@ function meta:EquipPermWep( weapon )
 		self:setSelfDarkRPVar( "equippedPermWeps", equipped_weps )
 		self:StripWeapon( added_wep )
 		self:ChatPrint( "Unequipped " .. PermWepsNames[added_wep] .. "!" )
-		self:ChatPrint( self:getDarkRPVar( "equippedPermWeps" ) )
 		return
 	elseif equipped_weps  == "none" then
 		self:setSelfDarkRPVar( "equippedPermWeps", added_wep )
@@ -77,7 +76,6 @@ function meta:EquipPermWep( weapon )
 	end
 	self:Give( added_wep )
 	self:ChatPrint( "Equipped " .. PermWepsNames[added_wep] .. "!" )
-	self:ChatPrint( self:getDarkRPVar( "equippedPermWeps" ) )
 end
 
 function meta:ReEquipPermWeps( )
