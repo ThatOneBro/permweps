@@ -1,36 +1,79 @@
+local function PermWepsInit( )
+	util.AddNetworkString( "BuyPermWep" )
+	util.AddNetworkString( "BuyVIPPermWep" )
+	util.AddNetworkString( "EquipPermWep" )
+end
+hook.Add( "Initialize", "PermWepsInit", PermWepsInit )
+
 --[[
-function Entity:IsPermWep( )
-	if table.HasValue( self )
-end
-
-function Player:IsVIP( )
-end
-
 local function DBLoader( )
-	registerDarkRPVar
+	create tables and stuff here if they don't exist
 end
 hook.Add( "DarkRPDBInitialized", "PermWepsDBLoader", DBLoader )
 ]]
 
-local function PermWepsNetCache( )
-	util.AddNetworkString( "BuyPermWep" )
+function string:IsPermWep( )
+	if PermWeps.Shop1[self] or PermWeps.Shop2[self] then 
+		return true
+	else
+		return false
+	end
 end
-hook.Add( "Initialize", "PermWepsNetCache", PermWepsNetCache )
+
+function string:IsVIPPermWep( )
+	if PermWeps.Shop2[self] and not PermWeps.Shop1[self] then
+		return true
+	else
+		return false
+	end
+end
 
 net.Receive( "BuyPermWep", function( )
 	local lply = net.ReadEntity( )
 	local purchased_weapon = net.ReadString( )
 	
-	--if not purchased_weapon:IsPermWep() then return end
-	local wep_price = PermWeps.Shop1[purchased_weapon]
-	
-	if lply:CanAfford( wep_price ) then
-		lply:AddMoney( -wep_price )
-		lply:Give( purchased_weapon )
-		lply:ChatPrint( "You bought a gun!" )
+	if not IsValid( lply ) then return end
+	if not purchased_weapon:IsPermWep( ) or purchased_weapon:IsVIPPermWep( ) then return end
+	if lply:OwnsPermWep( purchased_weapon ) then
+		lply:ChatPrint( "You already own this weapon!" )
+		return
+	end
+	local wep_price = PermWeps.Shop1[purchased_weapon].price
+	if lply:canAfford( wep_price ) then
+		lply:addMoney( -wep_price )
+		lply:AddPermWep( purchased_weapon )
+		lply:ChatPrint( "You bought: Permanent " .. PermWepsNames[purchased_weapon] .. "!")
 	else
 		lply:ChatPrint( "You cannot afford that!" )
 	end
+end )
+
+net.Receive( "BuyVIPPermWep", function( )
+	local lply = net.ReadEntity( )
+	local purchased_weapon = net.ReadString( )
+	
+	if not IsValid( lply ) then return end
+	if not purchased_weapon:IsPermWep( ) then return end
+	if not lply:IsVIP( ) and not lply:IsSuperAdmin( ) then return end
+	if lply:OwnsPermWep( purchased_weapon ) then
+		lply:ChatPrint( "You already own this weapon!" )
+		return
+	end
+	local wep_price = PermWeps.Shop2[purchased_weapon].price
+	if lply:canAfford( wep_price ) then
+		lply:addMoney( -wep_price )
+		lply:AddPermWep( purchased_weapon )
+		lply:ChatPrint( "You bought: Permanent " .. PermWepsNames[purchased_weapon] .. "!" )
+	else
+		lply:ChatPrint( "You cannot afford that!" )
+	end
+end )
+
+net.Receive( "EquipPermWep", function( )
+	local lply = net.ReadEntity( )
+	local equipped_weapon = net.ReadString( )
+	
+	lply:EquipPermWep( equipped_weapon )
 end )
 
 local function SpawnNormalGunShop( )
@@ -51,10 +94,16 @@ local function SpawnVIPGunShop( )
 end
 hook.Add( "InitPostEntity", "SpawnVIPGunShop", SpawnVIPGunShop )
 
---[[
-local function OnSpawnCheck( ply )
-	local lply = ply
-	
-	lply:SteamID()
+
+local function InitialSpawn( ply )
+	if not IsValid( ply ) then return end
+	ply:setSelfDarkRPVar( "ownedPermWeps", "none" )
+	ply:setSelfDarkRPVar( "equippedPermWeps", "none" )
 end
-]]
+hook.Add( "PlayerInitialSpawn", "PermWepsInitSpawn", InitialSpawn )
+
+local function EquipWepsOnSpawn( ply )
+	--check if value exists for player, if not create it
+	ply:ReEquipPermWeps( )
+end
+hook.Add( "PlayerSpawn", "PermWepsRespawn", EquipWepsOnSpawn )

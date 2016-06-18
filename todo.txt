@@ -1,9 +1,8 @@
 PermWeps
 ==========
-Create connection tester for mysql
-//Study GUI for DarkRP menus
-Create shop for single weapon
-Create purchase validator
-Create table for stored weapons
-Create dynamic GUI for list of weapons from config
-Create on spawn check
+Add database
+Create check on shop open (owned / equipped)
+Create updater for equipping / updating in shop
+Create icons for menu
+Add ondisconnect function
+Add optional weapon restrictions
