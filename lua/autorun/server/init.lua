@@ -5,13 +5,6 @@ local function PermWepsInit( )
 end
 hook.Add( "Initialize", "PermWepsInit", PermWepsInit )
 
---[[
-local function DBLoader( )
-	create tables and stuff here if they don't exist
-end
-hook.Add( "DarkRPDBInitialized", "PermWepsDBLoader", DBLoader )
-]]
-
 function string:IsPermWep( )
 	if PermWeps.Shop1[self] or PermWeps.Shop2[self] then 
 		return true
@@ -94,7 +87,6 @@ local function SpawnVIPGunShop( )
 end
 hook.Add( "InitPostEntity", "SpawnVIPGunShop", SpawnVIPGunShop )
 
-
 local function InitialSpawn( ply )
 	if not IsValid( ply ) then return end
 	ply:setSelfDarkRPVar( "ownedPermWeps", "none" )
@@ -103,7 +95,6 @@ end
 hook.Add( "PlayerInitialSpawn", "PermWepsInitSpawn", InitialSpawn )
 
 local function EquipWepsOnSpawn( ply )
-	--check if value exists for player, if not create it
 	ply:ReEquipPermWeps( )
 end
 hook.Add( "PlayerSpawn", "PermWepsRespawn", EquipWepsOnSpawn )
