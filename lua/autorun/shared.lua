@@ -7,6 +7,7 @@ hook.Add( "Initialize", "PermWepsSharedInit", function( )
 		PermWepsNames[k] = v.name
 	end
 	
+	DarkRP.registerDarkRPVar( "hasLoadedPWeps", net.WriteBool, net.ReadBool )
 	DarkRP.registerDarkRPVar( "ownedPermWeps", net.WriteString, net.ReadString )
 	DarkRP.registerDarkRPVar( "equippedPermWeps", net.WriteString, net.ReadString )
 end )

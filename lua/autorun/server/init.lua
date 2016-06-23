@@ -36,6 +36,7 @@ net.Receive( "BuyPermWep", function( )
 		lply:addMoney( -wep_price )
 		lply:AddPermWep( purchased_weapon )
 		lply:ChatPrint( "You bought: Permanent " .. PermWepsNames[purchased_weapon] .. "!")
+		lply:UpdatePWepsOwned( )
 	else
 		lply:ChatPrint( "You cannot afford that!" )
 	end
@@ -57,6 +58,7 @@ net.Receive( "BuyVIPPermWep", function( )
 		lply:addMoney( -wep_price )
 		lply:AddPermWep( purchased_weapon )
 		lply:ChatPrint( "You bought: Permanent " .. PermWepsNames[purchased_weapon] .. "!" )
+		lply:UpdatePWepsOwned( )
 	else
 		lply:ChatPrint( "You cannot afford that!" )
 	end
@@ -88,13 +90,13 @@ end
 hook.Add( "InitPostEntity", "SpawnVIPGunShop", SpawnVIPGunShop )
 
 local function InitialSpawn( ply )
-	if not IsValid( ply ) then return end
-	ply:setSelfDarkRPVar( "ownedPermWeps", "none" )
-	ply:setSelfDarkRPVar( "equippedPermWeps", "none" )
+	ply:setSelfDarkRPVar( "hasLoadedPWeps", false )
+	ply:LoadPWepsProfile( )
 end
 hook.Add( "PlayerInitialSpawn", "PermWepsInitSpawn", InitialSpawn )
 
 local function EquipWepsOnSpawn( ply )
+	if not ply:getDarkRPVar( "hasLoadedPWeps" ) then return end
 	ply:ReEquipPermWeps( )
 end
 hook.Add( "PlayerSpawn", "PermWepsRespawn", EquipWepsOnSpawn )
