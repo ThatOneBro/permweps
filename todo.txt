@@ -1,8 +1,0 @@
-PermWeps
-==========
-Add database
-Create check on shop open (owned / equipped)
-Create updater for equipping / updating in shop
-Create icons for menu
-Add ondisconnect function
-Add optional weapon restrictions
