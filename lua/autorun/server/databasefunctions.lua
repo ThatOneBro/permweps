@@ -31,6 +31,7 @@ function meta:LoadPWepsProfile( )
 		function( data )
 			if not data or not data[1] or not data[1].owned or not data[1].equipped then
 				self:CreatePWepsProfile( )
+				self:setSelfDarkRPVar( "hasLoadedPWeps", true )
 				return
 			end
 			self:setSelfDarkRPVar( "ownedPermWeps", data[1].owned )
@@ -42,7 +43,7 @@ function meta:LoadPWepsProfile( )
 			self:setSelfDarkRPVar( "ownedPermWeps", "none" )
 			self:setSelfDarkRPVar( "equippedPermWeps", "none" )
 			self:setSelfDarkRPVar( "hasLoadedPWeps", true )
-			error( "Failed to retrieve player data from database!" )
+			error( "Failed to retrieve player data from database" )
 		end
 	)
 end
