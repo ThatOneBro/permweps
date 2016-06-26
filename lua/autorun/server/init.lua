@@ -100,3 +100,11 @@ local function EquipWepsOnSpawn( ply )
 	ply:ReEquipPermWeps( )
 end
 hook.Add( "PlayerSpawn", "PermWepsRespawn", EquipWepsOnSpawn )
+
+local function RemoveVarsOnPlyDC( ply )
+	ply:UpdatePWepsOwned( )
+	ply:UpdatePWepsEquipped( )
+	ply:removeDarkRPVar( "ownedPermWeps" )
+	ply:removeDarkRPVar( "equippedPermWeps" )
+end
+hook.Add( "PlayerDisconnected", "PermWepsDisconnect", RemoveVarsOnPlyDC )

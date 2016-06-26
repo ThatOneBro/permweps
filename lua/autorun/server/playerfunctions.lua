@@ -73,7 +73,7 @@ function meta:EquipPermWep( weapon )
 	elseif equipped_weps  == "none" then
 		equipped_weps = added_wep
 	else
-		equipped_wep = equipped_weps .. "," .. added_wep
+		equipped_weps = equipped_weps .. "," .. added_wep
 	end
 	self:setSelfDarkRPVar( "equippedPermWeps", equipped_weps )
 	self:Give( added_wep )
