@@ -106,5 +106,6 @@ local function RemoveVarsOnPlyDC( ply )
 	ply:UpdatePWepsEquipped( )
 	ply:removeDarkRPVar( "ownedPermWeps" )
 	ply:removeDarkRPVar( "equippedPermWeps" )
+	ply:removeDarkRPVar( "hasLoadedPWeps" )
 end
 hook.Add( "PlayerDisconnected", "PermWepsDisconnect", RemoveVarsOnPlyDC )
